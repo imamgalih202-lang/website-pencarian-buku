@@ -1,0 +1,246 @@
+/* ==============================================================
+   TEMA: MODERN PREMIUM KLASIK (Krem & Terakota)
+   PROJECT: PERPUSTAKAAN DIGITAL SMKN 1 KISMANTORO
+   ============================================================== */
+
+/* 1. CSS Variables & Base */
+:root {
+    --bg-cream: #FDFBF7; /* Krem yang lebih bersih dan modern */
+    --primary-terra: #B84E32; /* Terakota andalan */
+    --primary-hover: #9a3f26;
+    --text-dark: #2D3748;
+    --text-muted: #718096;
+    --border-soft: rgba(229, 223, 211, 0.6);
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 20px 40px rgba(184, 78, 50, 0.15);
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* 2. Navbar Custom (Efek Glassmorphism) */
+.navbar-custom {
+    background-color: rgba(255, 255, 255, 0.85); /* Agak transparan */
+    backdrop-filter: blur(12px); /* Efek blur ala Mac/iOS */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s ease;
+}
+.navbar-custom.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.navbar-brand {
+    color: var(--primary-terra) !important;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+.nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-terra) !important;
+    transform: translateY(-2px);
+}
+
+/* 3. Search Bar (Lebih Clean & Round) */
+.search-bar {
+    border-radius: 50rem; /* Kapsul penuh */
+    background-color: #f4f1ea;
+    border: 2px solid transparent;
+    color: var(--text-dark);
+    padding: 0.6rem 1.5rem;
+    transition: all 0.3s ease;
+}
+.search-bar:focus {
+    background-color: #ffffff;
+    border-color: rgba(184, 78, 50, 0.3);
+    box-shadow: 0 0 0 4px rgba(184, 78, 50, 0.1);
+    outline: none;
+}
+
+/* 4. Buttons (Smooth Hover & Shadow) */
+.btn-orange {
+    background-color: var(--primary-terra);
+    color: white;
+    font-weight: 600;
+    border-radius: 50rem; /* Kapsul */
+    padding: 0.75rem 2rem;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(184, 78, 50, 0.2);
+}
+.btn-orange:hover {
+    background-color: var(--primary-hover);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 5. Hero Section, Badges & Animasi Mengambang */
+.hero-section {
+    padding: 80px 0;
+    position: relative;
+}
+.badge-hot {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    color: #ffffff;
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    z-index: 2;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transform: rotate(5deg);
+}
+
+/* Animasi Mengambang untuk Cover Hero */
+@keyframes float {
+    0% { transform: translateY(0px) rotateX(5deg) rotateY(-15deg); }
+    50% { transform: translateY(-15px) rotateX(5deg) rotateY(-15deg); }
+    100% { transform: translateY(0px) rotateX(5deg) rotateY(-15deg); }
+}
+
+.book-cover-hero {
+    border-radius: 16px;
+    box-shadow: 20px 20px 40px rgba(0,0,0,0.12), -10px -10px 20px rgba(255,255,255,0.8);
+    max-height: 480px;
+    object-fit: cover;
+    width: 100%;
+    /* Perspektif 3D & Animasi */
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 6. Card Buku (Katalog Modern) */
+.card-custom {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.card-custom .card-img-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card-custom img {
+    height: 320px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.card-custom:hover .card-img-wrapper {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.card-custom:hover img {
+    transform: scale(1.08); /* Zoom halus pada gambar */
+}
+
+/* 7. Mega Footer (Lebih Elegan & Bersih) */
+.footer-complex {
+    background-color: #111111; /* Hitam pekat modern */
+    color: #A0AEC0;
+    padding: 80px 0 30px 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+    border-top: 5px solid var(--primary-terra); /* Aksen terakota di atas */
+}
+.footer-complex h5 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+}
+.footer-complex a {
+    color: #A0AEC0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+.footer-complex a:hover {
+    color: var(--primary-terra);
+    padding-left: 8px; /* Efek bergeser ke kanan saat dihover */
+}
+.footer-input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+}
+.footer-input:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: var(--primary-terra);
+    box-shadow: none;
+}
+.btn-submit-footer {
+    background-color: var(--primary-terra);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.btn-submit-footer:hover {
+    background-color: var(--primary-hover);
+}
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    background-color: var(--primary-terra);
+    transform: translateY(-3px);
+    padding-left: 0; /* Reset hover shift untuk icon */
+}
+.social-icons i {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* --- 8. PERBAIKAN KONSISTENSI WARNA FOOTER --- */
+.footer-complex p,
+.footer-complex .text-muted,
+.footer-complex .small {
+    color: #A0AEC0 !important; /* Memaksa warna abu-abu terang */
+}
+
+/* Memperbaiki warna ikon panah di menu tautan */
+.footer-complex .list-unstyled i {
+    color: #A0AEC0 !important; 
+}
+
+/* Memperbaiki warna teks jam operasional */
+.footer-complex .bg-opacity-10 + div p {
+    color: #A0AEC0 !important;
+}
+
+/* Memastikan teks "Perpus SMKN 1" tetap putih */
+.footer-complex h5.text-white {
+    color: #ffffff !important;
+}
