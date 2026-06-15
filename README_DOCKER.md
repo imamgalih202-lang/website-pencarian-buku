@@ -29,9 +29,12 @@ Jika Anda ingin melihat atau mengelola database:
     - Password: `rootpassword`
 
 ## Catatan Deployment VPS
-Jika dideploy ke VPS, pastikan untuk mengubah `BASE_URL` di file `docker-compose.yml` menjadi IP VPS atau domain Anda:
+Aplikasi ini sudah dilengkapi dengan **deteksi otomatis URL**. Secara default, aplikasi akan menyesuaikan link dengan IP atau domain yang Anda akses di browser.
+
+Jika Anda menggunakan Domain (misal: `perpustakaan.com`) dan ingin memaksa URL tertentu, Anda bisa mengaturnya di file `docker-compose.yml`:
 ```yaml
 environment:
-  - BASE_URL=http://IP_VPS_ATAU_DOMAIN:3500/
+  - BASE_URL=http://domain-anda.com:3500/
 ```
 Jangan lupa buka port **3500** dan **8081** di firewall VPS Anda.
+

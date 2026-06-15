@@ -11,7 +11,8 @@ services:
       - DB_USER=user
       - DB_PASSWORD=password
       - DB_NAME=websiteskripsi
-      - BASE_URL=http://localhost:3500/
+      # BASE_URL otomatis dideteksi, atau isi manual jika pakai domain
+      # - BASE_URL=http://IP_VPS:3500/
     depends_on:
       - db
 

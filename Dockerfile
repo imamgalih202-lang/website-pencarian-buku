@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql
+    && docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql calendar
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
