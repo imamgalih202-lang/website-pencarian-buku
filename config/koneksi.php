@@ -1,11 +1,11 @@
 <?php
 // ==========================================
-// PENGATURAN DATABASE
+// PENGATURAN DATABASE (Mendukung Docker/Environment Variables)
 // ==========================================
-$host     = "localhost";
-$username = "root";       // Default XAMPP username
-$password = "";           // Default XAMPP password (kosong)
-$database = "websiteskripsi"; // Nama database baru yang baru saja kita buat
+$host     = getenv('DB_HOST') ?: "localhost";
+$username = getenv('DB_USER') ?: "root";
+$password = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : "";
+$database = getenv('DB_NAME') ?: "websiteskripsi";
 
 // Membuat koneksi menggunakan MySQLi (Object-Oriented)
 $mysqli = new mysqli($host, $username, $password, $database);
@@ -22,9 +22,7 @@ $mysqli->set_charset("utf8mb4");
 // ==========================================
 // PENGATURAN BASE_URL (ALAMAT ABSOLUT)
 // ==========================================
-// Pastikan nama folder "websiteskripsi" di bawah ini persis 
-// dengan nama folder proyek Anda di dalam C:\xampp\htdocs\
 if (!defined('BASE_URL')) {
-    define('BASE_URL', 'http://localhost/websiteskripsi/');
+    define('BASE_URL', getenv('BASE_URL') ?: 'http://localhost/websiteskripsi/');
 }
 ?>
